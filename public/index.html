@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess</title>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+  <title>Firebase Test</title>
 </head>
 <body>
-    <script>
-    // Replace the connectWebSocket function with:
-    function connectWebSocket() {
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const host = window.location.host;
-        socket = new WebSocket(`${protocol}//${host}/ws`);
-        
-        socket.onopen = () => {
-            console.log("WebSocket connected");
-            updateRoomList();
-        };
-        
-        socket.onmessage = handleSocketMessage;
-        
-        socket.onclose = () => {
-            console.log("WebSocket disconnected");
-            if (currentPage !== 'home') {
-                alert("Connection lost. Returning to home page.");
-                showHomePage();
-            }
-        };
-    }
-    
-    // Remove the entire simulateServerResponse function
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<script>
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Example: Access Realtime Database
+  const db = firebase.database();
+  db.ref('test').set("Hello Firebase");
 </script>
+
 </body>
 </html>
